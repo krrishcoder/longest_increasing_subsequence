@@ -1,5 +1,6 @@
 
-## memoization
+
+################################################ memoization code vfchfhrjtyht ##################################################################################
 
 #include <iostream>
 #include <limits.h>
@@ -7,7 +8,7 @@
 
 using namespace std;
 
-int t[7][5]; // Memoization table
+int t[1000][1000]; // Memoization table
 
 
 int helper(int nums[], int n, int prev) {
@@ -31,48 +32,59 @@ int helper(int nums[], int n, int prev) {
 }
 
 int lengthOfLIS(int nums[], int n) {
+    
+      int maxVal = INT_MIN;
+    for (int i = 0; i < n; i++) {
+        if (nums[i] > maxVal) {
+            maxVal = nums[i];
+        }
+    }
+    
+    int a =  maxVal+2;
+    int b = n+1;
  
-    for (int i = 0; i < 7; ++i) {
-        for (int j = 0; j < 5; ++j) {
+    for (int i = 0; i < b; ++i) {
+        for (int j = 0; j < a; ++j) {
             t[i][j] = -1;
         }
     }
     
-     for (int j = 0; j < 5; ++j) {
+     for (int j = 0; j < a; ++j) {
             t[j][0] = 0;
         }
-
-    return helper(nums, n, 4);
+    
+    return helper(nums, n, maxVal+1);
 }
 
 int main() {
-    int nums[] = {0, 1, 0, 3, 2, 3};
-    int n = 6;
+    // int nums[] = {0, 1, 0, 3, 2, 3};
+    // int n = 6;
 
-    cout << "Length of longest increasing subsequence: " << lengthOfLIS(nums, n) << endl;
+    // cout << "Length of longest increasing subsequence: " << lengthOfLIS(nums, n) << endl;
+    
+    
+    cout<<"give n : ";
+    int n=0;
+    cin>>n;
+    
+    int nums[n];
+    
+    for(int i=0;i <n;i++){
+        cout<<"give input : ";
+        cin>>nums[i];
+    }
+    
+     cout << "Length of longest increasing subsequence: " << lengthOfLIS(nums, n) << endl;
+    
+    
+
 
     return 0;
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+################################################ recursive code ##################################################################################
 
 #include <iostream>
 #include <limits.h>
