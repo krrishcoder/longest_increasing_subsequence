@@ -16,11 +16,14 @@ int lengthOfLIS(int nums[], int n) {
     for (int i = 1; i < n; i++) {
         for (int j = 0; j < i; j++) {
             if (nums[i] > nums[j]) {
-                dp[i] = (dp[i] > dp[j] + 1) ? dp[i] : (dp[j] + 1);  
+                
+                if(dp[i]+1 > dp[j] ){
+                   dp[i] =  dp[j] + 1;
+                }
+                
             }
         }
     }
-
 
     int maxLIS = 0;
     for (int i = 0; i < n; i++) {
