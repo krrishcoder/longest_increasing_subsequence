@@ -1,4 +1,74 @@
 
+########################################################### DP CODE #################################################
+
+#include <iostream>
+#include <algorithm> // For max()
+
+using namespace std;
+
+int lengthOfLIS(int nums[], int n) {
+    if (n == 0) return 0;
+
+    int dp[n];
+    
+    for (int i = 0; i < n; i++) {
+        dp[i] = 1;
+    }
+
+    for (int i = 1; i < n; i++) {
+        for (int j = 0; j < i; j++) {
+            if (nums[i] > nums[j]) {
+                dp[i] = max(dp[i], dp[j] + 1);
+            }
+        }
+    }
+
+    // The length of the longest increasing subsequence is the maximum value in dp array
+    int maxLength = 0;
+    for (int i = 0; i < n; i++) {
+        maxLength = max(maxLength, dp[i]);
+    }
+
+    return maxLength;
+}
+
+int main() {
+ 
+    cout << "Enter number of elements: ";
+    int n;
+    cin >> n;
+
+    int nums[n];
+    cout << "Enter the elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> nums[i];
+    }
+
+    cout << "Length of Longest Increasing Subsequence: " << lengthOfLIS(nums, n) << endl;
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ################################################ memoization code vfchfhrjtyht ##################################################################################
 
